@@ -14,6 +14,7 @@ RUN apt-get update \
 
 WORKDIR /home/pptruser
 ADD images /home/pptruser/images
+COPY app.js /home/pptruser/
 
 RUN npm install express --save
 
@@ -29,8 +30,8 @@ RUN npm i puppeteer \
 
 USER pptruser
 
-CMD ["google-chrome-stable"] 
+CMD ["node", "app.js"]
 EXPOSE 8080
-# in order to docker run, use command: docker run -i --init -p 8055:8055 --cap-add=SYS_ADMIN --rm matabora/dockerpupetteertest13 -e "`cat app.js`"
+# in order to docker run, use command: docker run -i --init -p 8055:8055 --cap-add=SYS_ADMIN --rm matabora/dockerpupetteertest15
 # in order to view webserver: http://localhost:8055/kitty
-#in order to build image: docker build -t matabora/dockerpupetteertest13 . 
+#in order to build image: docker build -t matabora/dockerpupetteertest15 . 

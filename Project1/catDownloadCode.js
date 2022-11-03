@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer');
-const fs = require('fs/promises');
+const fsp = require('fs/promises');
 
 (async () => {
   const browser = await puppeteer.launch({headless: false, slowMo: 150,});
@@ -11,7 +11,7 @@ const fs = require('fs/promises');
   console.log(imageURL);
 
   const imagePage = await page.goto(imageURL);
-  await fs.writeFile("cat.jpg", await imagePage.buffer());
+  await fsp.writeFile("cat.jpg", await imagePage.buffer());
 
   await browser.close();
 })();
